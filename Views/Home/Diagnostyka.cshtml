@@ -1,0 +1,1120 @@
+﻿
+@{
+    ViewBag.Title = "Diagnostyka";
+}
+<html>
+<body>
+
+    <div class="container">
+        <div class="content">
+            <div class="sensor">
+                <div class="Lefttx">
+                    <h1>Czujnik Jonoselektywny</h1>
+                </div>
+                <div class="RightLED">
+                    <div class="led-box">
+                        <div id="led-greenJS"></div>
+                        <p>Working</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-yellowJS"></div>
+                        <p>Warning</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-redJS"></div>
+                        <p>Error</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sensor">
+                <div class="Lefttx">
+                    <h1>Czujnik Temperatury</h1>
+                </div>
+                <div class="RightLED">
+                    <div class="led-box">
+                        <div id="led-greenT"></div>
+                        <p>Working</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-yellowT"></div>
+                        <p>Warning</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-redT"></div>
+                        <p>Error</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sensor">
+                <div class="Lefttx">
+                    <h1> Czujnik O2 </h1>
+                </div>
+                <div class="RightLED">
+                    <div class="led-box">
+                        <div id="led-greenO2"></div>
+                        <p>Working</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-yellowO2"></div>
+                        <p>Warning</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-redO2"></div>
+                        <p>Error</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sensor">
+                <div class="Lefttx">
+                    <h1> Czujnik Konduktancji </h1>
+                </div>
+                <div class="RightLED">
+                    <div class="led-box">
+                        <div id="led-greenCond"></div>
+                        <p>Working</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-yellowCond"></div>
+                        <p>Warning</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-redCond"></div>
+                        <p>Error</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sensor">
+                <div class="Lefttx">
+                    <h1> Czujnik PH </h1>
+                </div>
+                <div class="RightLED">
+                    <div class="led-box">
+                        <div id="led-greenPH"></div>
+                        <p>Working</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-yellowPH"></div>
+                        <p>Warning</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-redPH"></div>
+                        <p>Error</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sensor">
+                <div class="Lefttx">
+                    <h1>GPS</h1>
+                </div>
+                <div class="RightLED">
+                    <div class="led-box">
+                        <div id="led-greenGPS"></div>
+                        <p>Working</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-yellowGPS"></div>
+                        <p>Warning</p>
+                    </div>
+                    <div class="led-box">
+                        <div id="led-redGPS"></div>
+                        <p>Error</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <button onclick="myFunction()">Restart</button>
+
+
+        </div>
+        <h2>Granice</h2>
+        Podaj granice górną:    <input type="number" id="up-limit">  <button onclick="document.getElementById('up-limit').value = ''">Wyczyść</button>
+        <br><br>
+        Podaj granice dolną:    <input type="number" id="down-limit">  <button onclick="document.getElementById('down-limit').value = ''">Wyczyść</button>
+        <br><br>
+        Wybierz do którego sygnału
+        <input type="button" name="pole" value=" Temperatura " Onclick="Temperatura()">
+        <input type="button" name="pole" value=" O2 " Onclick="O2()">
+        <input type="button" name="pole" value=" Konduktancja " Onclick="Cond()">
+        <input type="button" name="pole" value=" PH " Onclick="PH()">
+        <input type="button" name="pole" value=" Jonoselektywny " Onclick="JS()">
+    </div>
+</body>
+</html>
+
+<style>
+    h2 {
+        text-align: left;
+    }
+
+    .container {
+        /*Przygotowanie miejsca na wyświetlaną zawartość*/
+        width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+    }
+
+    .content {
+        /*Podział na mniejszy klaser*/
+        width: 1200px;
+        margin-left: auto;
+        height: 500px;
+    }
+
+    .sensor {
+        /*Część wyświetlająca diagnostykę każdego poszczególnego czujnika*/
+        width: 1200px;
+        margin-left: auto;
+        height: 80px;
+        border-width: 3px; /*Grubość ramki*/
+        border-left-style: solid; /*Obramowanie lewej strony*/
+        border-right-style: solid; /*Obramowanie prawej strony*/
+        border-bottom-style: solid; /*Obramowanie dołu*/
+        border-color: black; /*kolor ramki*/
+    }
+
+    .Lefttx {
+        /*Tworzenie miejsca na opis czujnika*/
+        float: left;
+        width: 797px; /*Ramka pomniejsza o 3 px, szerokośc tej części bez ramki 800px*/
+        height: 78px; /*Podobnie jak powyżej, dobrane doświadczalnie*/
+        text-align: left;
+        margin: auto;
+    }
+
+    .RightLED {
+        /*Tworzenie miejsca na ledy*/
+        margin-left: auto;
+        height: 78px;
+        float: left;
+        width: 397px;
+        border-width: 1px;
+        border-left-style: solid;
+        border-color: black;
+    }
+
+
+    .led-box {
+        /*Miejsce na pojedyńczy LED*/
+        height: 30px;
+        width: 25%;
+        margin: 10px;
+        float: left;
+    }
+
+    .led-box p {
+        /*Wycentrowanie w boxie diody*/
+        font-size: 12px;
+        text-align: center;
+        margin: 1em;
+    }
+
+    /*Diody czujnik jonoselektywny*/
+    #led-greenJS {
+        /*Stworzenie zielonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        background-color: #ABFF00; /*ustaw żeby świeciła*/
+        /*background-color: #63871B; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-yellowJS {
+        /*Stworzenie żółtej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #FF0; ustaw żeby świeciła*/
+        background-color: #AA0; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-redJS {
+        /*Stworzenie czerwonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        background-color: #A00; /*to kolor ciemny*/
+        /*background-color: #F00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+
+    /*Diody Temperatura*/
+    #led-greenT {
+        /*Stworzenie zielonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #63871B; to kolor ciemny*/
+        background-color: #ABFF00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-yellowT {
+        /*Stworzenie żółtej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #FF0; ustaw żeby świeciła*/
+        background-color: #AA0; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-redT {
+        /*Stworzenie czerwonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #F00; ustaw żeby świeciła*/
+        background-color: #A00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+
+    /*Diody O2*/
+    #led-greenO2 {
+        /*Stworzenie zielonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #63871B; to kolor ciemny*/
+        background-color: #ABFF00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-yellowO2 {
+        /*Stworzenie żółtej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #FF0; ustaw żeby świeciła*/
+        background-color: #AA0; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-redO2 {
+        /*Stworzenie czerwonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #F00; ustaw żeby świeciła*/
+        background-color: #A00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+
+
+    /*Diody Konduktancja*/
+    #led-greenCond {
+        /*Stworzenie zielonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #63871B; to kolor ciemny*/
+        background-color: #ABFF00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-yellowCond {
+        /*Stworzenie żółtej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #FF0; ustaw żeby świeciła*/
+        background-color: #AA0; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-redCond {
+        /*Stworzenie czerwonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #F00; ustaw żeby świeciła*/
+        background-color: #A00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+
+    /*Diody PH*/
+    #led-greenPH {
+        /*Stworzenie zielonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        background-color: #ABFF00; /*ustaw żeby świeciła*/
+        /*background-color: #63871B; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-yellowPH {
+        /*Stworzenie żółtej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #FF0;ustaw żeby świeciła*/
+        background-color: #AA0; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-redPH {
+        /*Stworzenie czerwonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        background-color: #A00; /*to kolor ciemny*/
+        /*background-color: #F00; Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+
+    /*Diody GPS*/
+    #led-greenGPS {
+        /*Stworzenie zielonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #63871B; to kolor ciemny*/
+        background-color: #ABFF00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-yellowGPS {
+        /*Stworzenie żółtej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #FF0; ustaw żeby świeciła*/
+        background-color: #AA0; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+    #led-redGPS {
+        /*Stworzenie czerwonej diody*/
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        /*background-color: #F00; ustaw żeby świeciła*/
+        background-color: #A00; /*Nadanie koloru diody*/
+        border-radius: 50%; /*Nadanie okrągłego kształtu*/
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
+    }
+
+
+
+    h1 {
+        text-align: center;
+        vertical-align: middle;
+        font-size: 22px;
+    }
+</style>
+
+<!-- Ustalenie granic-->
+<script>
+    //Granice Temperatury Elmetron
+    up_li_T = 100;
+    down_li_T = -1;
+
+    //Granice O2 Elmetron
+    up_li_O2 = 150;
+    down_li_O2 = 0.1;
+
+
+    //Granice Konduktancji Elmetron
+    up_li_Cond = 10000;
+    down_li_Cond = 1;
+
+
+    //Granice PH Elmetron
+    up_li_PH = 14;
+    down_li_PH = 0;
+
+    //Granice Jonoselektywny
+    up_li_JS = 500;
+    down_li_JS = -100;
+</script>
+
+
+<!-- Granice Temperatura -->
+<script>
+    function Temperatura() {
+        //sprawdzenie czy pole jest puste, jeśli nie to wpisuje dane jako granice
+        if (document.getElementById('up-limit').value == '' || document.getElementById('down-limit').value == '') {
+            alert("Podaj wartości granic!");
+        }
+        else {
+            up_li_T = parseInt(document.getElementById('up-limit').value);
+            down_li_T = parseInt(document.getElementById('down-limit').value);
+            alert("Ustawiono nowe granice:\nTemperatura\nGórna granica: " + up_li_T + "\nDolna granica: " + down_li_T);
+            //console.log("Temperatura\nGórna granica: " + up_li_T + "\nDolna granica: " + down_li_T);
+        }
+    }
+</script>
+
+<!-- Granice O2 -->
+<script>
+    function O2() {
+        //sprawdzenie czy pole jest puste, jeśli nie to wpisuje dane jako granice
+        if (document.getElementById('up-limit').value == '' || document.getElementById('down-limit').value == '') {
+            alert("Podaj wartości granic!");
+        }
+        else {
+            up_li_O2 = parseInt(document.getElementById('up-limit').value);
+            down_li_O2 = parseInt(document.getElementById('down-limit').value);
+            alert("Ustawiono nowe granice:\nO2\nGórna granica: " + up_li_O2 + "\nDolna granica: " + down_li_O2);
+            //console.log("O2\nGórna granica: " + up_li_O2 + "\nDolna Granica: " + down_li_O2);
+        }
+    }
+</script>
+
+<!-- Granice Konduktancja -->
+<script>
+    function Cond() {
+        //sprawdzenie czy pole jest puste, jeśli nie to wpisuje dane jako granice
+        if (document.getElementById('up-limit').value == '' || document.getElementById('down-limit').value == '') {
+            alert("Podaj wartości granic!");
+        }
+        else {
+            up_li_Cond = parseInt(document.getElementById('up-limit').value);
+            down_li_Cond = parseInt(document.getElementById('down-limit').value);
+            alert("Ustawiono nowe granice:\nKonduktancja\nGórna granica: " + up_li_Cond + "\nDolna granica: " + down_li_Cond);
+            //console.log("Konduktancja\nGórna granica: " + up_li_Cond + "\nDolna Granica: " + down_li_Cond);
+        }
+    }
+</script>
+
+<!-- Granice PH -->
+<script>
+    function PH() {
+        //sprawdzenie czy pole jest puste, jeśli nie to wpisuje dane jako granice
+        if (document.getElementById('up-limit').value == '' || document.getElementById('down-limit').value == '') {
+            alert("Podaj wartości granic!");
+        }
+        else {
+            up_li_PH = parseInt(document.getElementById('up-limit').value);
+            down_li_PH = parseInt(document.getElementById('down-limit').value);
+            alert("Ustawiono nowe granice:\nPH\nGórna granica: " + up_li_PH + "\nDolna granica: " + down_li_PH);
+            //console.log("PH\nGórna granica: " + up_li_PH + "\nDolna Granica: " + down_li_PH);
+        }
+    }
+</script>
+
+<!-- Granice Jonoselektywny -->
+<script>
+    function JS() {
+        //sprawdzenie czy pole jest puste, jeśli nie to wpisuje dane jako granice
+        if (document.getElementById('up-limit').value == '' || document.getElementById('down-limit').value == '') {
+            alert("Podaj wartości granic!");
+        }
+        else {
+            up_li_JS = parseInt(document.getElementById('up-limit').value);
+            down_li_JS = parseInt(document.getElementById('down-limit').value);
+            alert("Ustawiono nowe granice:\nJonoselektywny\nGórna granica: " + up_li_JS + "\nDolna granica: " + down_li_JS);
+            //console.log("PH\nGórna granica: " + up_li_JS + "\nDolna Granica: " + down_li_JS);
+        }
+    }
+</script>
+
+
+<!-- Funkcja do resetowania diod -->
+<script>
+    function myFunction() {
+        document.getElementById("led-greenJS").style.backgroundColor = "#ABFF00";
+        document.getElementById("led-yellowJS").style.backgroundColor = "#AA0";
+        document.getElementById("led-redJS").style.backgroundColor = "#A00";
+        document.getElementById("led-greenT").style.backgroundColor = "#ABFF00";
+        document.getElementById("led-yellowT").style.backgroundColor = "#AA0";
+        document.getElementById("led-redT").style.backgroundColor = "#A00";
+        document.getElementById("led-greenO2").style.backgroundColor = "#ABFF00";
+        document.getElementById("led-yellowO2").style.backgroundColor = "#AA0";
+        document.getElementById("led-redO2").style.backgroundColor = "#A00";
+        document.getElementById("led-greenCond").style.backgroundColor = "#ABFF00";
+        document.getElementById("led-yellowCond").style.backgroundColor = "#AA0";
+        document.getElementById("led-redCond").style.backgroundColor = "#A00";
+        document.getElementById("led-greenPH").style.backgroundColor = "#ABFF00";
+        document.getElementById("led-yellowPH").style.backgroundColor = "#AA0";
+        document.getElementById("led-redPH").style.backgroundColor = "#A00";
+        document.getElementById("led-greenGPS").style.backgroundColor = "#ABFF00";
+        document.getElementById("led-yellowGPS").style.backgroundColor = "#AA0";
+        document.getElementById("led-redGPS").style.backgroundColor = "#A00";
+    }
+</script>
+
+<!-- Funkcja do włączania error, gdy błąd na sygnale Jonoselektywnym-->
+<script>
+    function JSerror() {
+        document.getElementById("led-greenJS").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowJS").style.backgroundColor = "#AA0";
+        document.getElementById("led-redJS").style.backgroundColor = "#F00";
+    }
+</script>
+
+<!-- Funkcja do włączania error, gdy błąd na sygnale Temperatury -->
+<script>
+    function Terror() {
+        document.getElementById("led-greenT").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowT").style.backgroundColor = "#AA0";
+        document.getElementById("led-redT").style.backgroundColor = "#F00";
+    }
+</script>
+
+<!-- Funkcja do włączania error, gdy błąd na sygnale O2 -->
+<script>
+    function O2error() {
+        document.getElementById("led-greenO2").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowO2").style.backgroundColor = "#AA0";
+        document.getElementById("led-redO2").style.backgroundColor = "#F00";
+    }
+</script>
+
+<!-- Funkcja do włączania error, gdy błąd na sygnale Konduktancji -->
+<script>
+    function Conderror() {
+        document.getElementById("led-greenCond").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowCond").style.backgroundColor = "#AA0";
+        document.getElementById("led-redCond").style.backgroundColor = "#F00";
+    }
+</script>
+
+<!-- Funkcja do włączania error, gdy błąd na sygnale Konduktancji -->
+<script>
+    function PHerror() {
+        document.getElementById("led-greenPH").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowPH").style.backgroundColor = "#AA0";
+        document.getElementById("led-redPH").style.backgroundColor = "#F00";
+    }
+</script>
+
+<!-- Funkcja do włączania error, gdy błąd na GPS -->
+<script>
+    function GPSerror() {
+        document.getElementById("led-greenGPS").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowGPS").style.backgroundColor = "#AA0";
+        document.getElementById("led-redGPS").style.backgroundColor = "#F00";
+    }
+</script>
+
+<!-- Funkcja do włączania warning, gdy błąd na sygnale Jonoselektywnym -->
+<script>
+    function JSwar() {
+        document.getElementById("led-greenJS").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowJS").style.backgroundColor = "#FF0";
+        document.getElementById("led-redJS").style.backgroundColor = "#A00";
+    }
+</script>
+
+<!-- Funkcja do włączania warning, gdy błąd na sygnale Temperatury -->
+<script>
+    function Twar() {
+        document.getElementById("led-greenT").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowT").style.backgroundColor = "#FF0";
+        document.getElementById("led-redT").style.backgroundColor = "#A00";
+    }
+</script>
+
+<!-- Funkcja do włączania warning, gdy błąd na sygnale O2 -->
+<script>
+    function O2war() {
+        document.getElementById("led-greenO2").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowO2").style.backgroundColor = "#FF0";
+        document.getElementById("led-redO2").style.backgroundColor = "#A00";
+    }
+</script>
+
+<!-- Funkcja do włączania warning, gdy błąd na sygnale Konduktancji -->
+<script>
+    function Condwar() {
+        document.getElementById("led-greenCond").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowCond").style.backgroundColor = "#FF0";
+        document.getElementById("led-redCond").style.backgroundColor = "#A00";
+    }
+</script>
+
+<!-- Funkcja do włączania warning, gdy błąd na sygnale Konduktancji -->
+<script>
+    function PHwar() {
+        document.getElementById("led-greenPH").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowPH").style.backgroundColor = "#FF0";
+        document.getElementById("led-redPH").style.backgroundColor = "#A00";
+    }
+</script>
+
+<!-- Funkcja do włączania warning, gdy błąd na GPS -->
+<script>
+    function GPSwar() {
+        document.getElementById("led-greenGPS").style.backgroundColor = "#63871B";
+        document.getElementById("led-yellowGPS").style.backgroundColor = "#FF0";
+        document.getElementById("led-redGPS").style.backgroundColor = "#A00";
+    }
+</script>
+
+<!-- Temperatura Elmetron -->
+<script>
+    //Temperatura Elmetron
+    console.time('timerT');
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromElmetron", function (data) {
+            var name = "Temperatura Elmetron";
+            var dateTime = []
+            var Tarray = []
+            var e = []
+            var err;
+            var war;
+            var sigma = 1;
+
+            for (var i = data.length - 918; i < data.length; i++) {
+                dateTime.push(data[i].date);
+                Tarray.push(data[i].temperature);
+            }
+            e[i] = new Array(5);
+            //console.log("Wartosc Temp = " + Tarray);
+
+            e = Diagnostyka2(name, Tarray, dateTime, up_li_T, down_li_T, sigma);
+            //console.log("Temperatura z funkcji źle" + Diagnostyka2(name, Tarray, dateTime, up_li_T, down_li_T));
+
+
+            //console.log("Temperatura\nGórna granica: " + up_li_T + "\nDolna granica: " + down_li_T);
+            err = e[0][0];
+            war = e[0][1];
+            //console.log("Temperatura err =" + e[0][0]);
+            if (war != 0) {
+
+                Twar();
+
+            }
+            if (err != 0) {
+
+                Terror();
+
+            }
+        });
+
+    });
+
+    console.timeEnd('timerT');
+
+</script>
+
+<!-- O2 Elmetron -->
+<script>
+    //O2 Elmetron
+    console.time('timerO2');
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromElmetron", function (data) {
+            var name = "02 Elmetron";
+            var dateTime = []
+            var O2array = []
+            var e = []
+            var err;
+            var war;
+            var sigma = 2.5;
+
+            for (var i = data.length - 918; i < data.length; i++) {
+                dateTime.push(data[i].date);
+                O2array.push(data[i].O2);
+            }
+            e[i] = new Array(5);
+            //console.log("Wartosc O2 = " + O2array);
+
+            e = Diagnostyka2(name, O2array, dateTime, up_li_O2, down_li_O2, sigma);
+            //console.log("O2 z funkcji źle" + Diagnostyka2(name, O2array, dateTime, up_li_O2, down_li_O2));
+
+            err = e[0][0];
+            war = e[0][1];
+            //console.log("O2 err =" + e[0][0]);
+            if (war != 0) {
+
+                O2war();
+
+            }
+            if (err != 0) {
+
+                O2error();
+
+            }
+        });
+
+    });
+
+    console.timeEnd('timerO2');
+
+</script>
+
+<!-- Konduktancja Elmetron -->
+<script>
+    //Konduktancja Elmetron
+    console.time('timerCond');
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromElmetron", function (data) {
+            var name = "Konduktancja Elmetron";
+            var dateTime = []
+            var Condarray = []
+            var e = []
+            var err;
+            var war;
+            var sigma = 1;
+
+            for (var i = data.length - 918; i < data.length; i++) {
+                dateTime.push(data[i].date);
+                Condarray.push(data[i].Conductivity);
+            }
+            e[i] = new Array(5);
+            //console.log("Wartosc Konduktancji = " + Condarray);
+
+            e = Diagnostyka2(name, Condarray, dateTime, up_li_Cond, down_li_Cond, sigma);
+            //console.log("Konduktancja z funkcji źle" + Diagnostyka2(name, Condarray, dateTime, up_li_Cond, down_li_Cond));
+
+            err = e[0][0];
+            war = e[0][1];
+            //console.log("Konduktancja err =" + e[0][0]);
+            if (war != 0) {
+
+                Condwar();
+
+            }
+            if (err != 0) {
+
+                Conderror();
+
+            }
+        });
+
+    });
+
+    console.timeEnd('timerCond');
+
+</script>
+
+<!-- PH Elmetron -->
+<script>
+    //PH Elmetron
+    console.time('timerPH');
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromElmetron", function (data) {
+            var name = "PH Elmetron";
+            var dateTime = []
+            var PHarray = []
+            var e = []
+            var err;
+            var war;
+            var sigma = 2;
+
+            for (var i = data.length - 918; i < data.length; i++) {
+                dateTime.push(data[i].date);
+                PHarray.push(data[i].PH);
+            }
+            e[i] = new Array(5);
+            //console.log("Wartosc PH = " + PHarray);
+
+            e = Diagnostyka2(name, PHarray, dateTime, up_li_PH, down_li_PH, sigma);
+            //console.log("PH z funkcji źle" + Diagnostyka2(a, PHarray, dateTime, up_li_PH, down_li_PH));
+
+            err = e[0][0];
+            war = e[0][1];
+            //console.log("PH err =" + e[0][0]);
+            if (war != 0) {
+
+                PHwar();
+
+            }
+            if (err != 0) {
+
+                PHerror();
+
+            }
+        });
+
+    });
+
+    console.timeEnd('timerPH');
+
+</script>
+
+<!-- GPS Elmetron -->
+<script>
+    /*console.time('timerGPS');
+    //Szerokość Elmetron
+
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromElmetron", function (data) {
+            var name = "GPS";
+            var dateTime = []
+            var latarray = []
+            var e = []
+            var err = 0;
+            var war;
+            for (var i = 0; i < data.length; i++) {
+                dateTime.push(data[i].date);
+
+                latarray.push(data[i].lat);
+            }
+            e[i] = new Array(5);
+            //console.log("Wartości długości" + latarray);
+            //console.log("Szerokość z funkcji źle" + Diagnostyka2(a, latarray, dateTime));
+
+            //e = Diagnostyka2(name, latarray, dateTime);
+
+            err = e[0][0];
+            war = e[0][1];
+            console.log("GPS err =" + err);
+            if (war != 0) {
+
+                GPSwar();
+
+            }
+            if (err != 0) {
+
+                GPSerror();
+
+            }
+        });
+
+    });
+
+    //Długość Elmetron
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromElmetron", function (data) {
+            var name = "GPS";
+            var dateTime = []
+            var lonarray = []
+            var e = []
+            var err = 0;
+            for (var i = 0; i < data.length; i++) {
+                dateTime.push(data[i].date);
+
+                lonarray.push(data[i].lon);
+            }
+            e[i] = new Array(4);
+            //console.log("Wartości długości" + lonarray);
+            //console.log("Długość z funkcji źle" + Diagnostyka2(a, lonarray, dateTime));
+
+            //e = Diagnostyka2(name, lonarray, dateTime);
+
+            err = e[0][0];
+
+            console.log("GPS err =" + err);
+            if (err != 0) {
+
+                GPSerror();
+
+            }
+        });
+
+    });
+    console.timeEnd('timerGPS');
+    */
+</script>
+
+<!-- Jonoselektywny -->
+<script>
+    //Jonoselektywny
+    console.time('timerJS');
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetData", function (data) {
+            var name = "Jonoselektywny";
+            var dateTime = []
+            var mv0array = []
+            var mv1array = []
+            var mv2array = []
+            var mv3array = []
+            //var mv4array = []
+            //var mv5array = []
+            //var mv6array = []
+            var e = []
+            var sigma = 1.5;
+            var err0, err1, err2, err3;
+            var war0, war1, war2, war3;
+
+
+
+            for (var i = data.length - 885; i < data.length; i++) {
+                dateTime.push(data[i].date);
+
+                mv0array.push(data[i].mv0);
+                mv1array.push(data[i].mv1);
+                mv2array.push(data[i].mv2);
+                mv3array.push(data[i].mv3);
+                //mv4array.push(data[i].mv4);
+                //mv5array.push(data[i].mv5);
+                //mv6array.push(data[i].mv6);
+
+            }
+
+            e[i] = new Array(5);
+            //console.log("Wartosc PH = " + PHarray);
+
+            //e = Diagnostyka2(name, PHarray, dateTime, up_li_JS, down_li_JS, sigma);
+            for (i = 0; i < 4; i++) {
+                name = "Jonoselektywny ch" + i;
+                if (i == 0) { //gdy i = 0 sprawdzamy sygnał ch0
+                    e = Diagnostyka2(name, mv0array, dateTime, up_li_JS, down_li_JS, sigma);
+                    err0 = e[0][0];
+                    war0 = e[0][1];
+                }
+                if (i == 1) { //gdy i = 1 sprawdzamy sygnał ch1
+                    e = Diagnostyka2(name, mv1array, dateTime, up_li_JS, down_li_JS, sigma);
+                    err1 = e[0][0];
+                    war1 = e[0][1];
+                }
+                if (i == 2) { //gdy i = 2 sprawdzamy sygnał ch2
+                    e = Diagnostyka2(name, mv2array, dateTime, up_li_JS, down_li_JS, sigma);
+                    err2 = e[0][0];
+                    war2 = e[0][1];
+                }
+                if (i == 3) { //gdy i = 2 sprawdzamy sygnał ch3
+                    e = Diagnostyka2(name, mv3array, dateTime, up_li_JS, down_li_JS, sigma);
+                    err3 = e[0][0];
+                    war3 = e[0][1];
+                }
+            }
+
+            //Sprawdzanie czy na którymś z sygnałów Jonoselektywnych występuje błąd
+            if (war0 != 0 || war1 != 0 || war2 != 0 || war3 != 0) {
+
+                JSwar();
+
+            }
+            if (err0 != 0 || err1 != 0 || err2 != 0 || err3 != 0) {
+
+                JSerror();
+
+            }
+        });
+
+    });
+
+    console.timeEnd('timerJS');
+
+</script>
+
+<!-- Funkcja diagnostyczna -->
+<script>
+    //Funkcja diagnostyczna 2 sposób
+    function Diagnostyka2(name, x, y, up_li, down_li, sigma) {
+
+        var diag = []; //stworzenie szablonu do przechowywania danych przydatnych do diagnostyki poprawności działania algorytmu
+        var avr = []
+        var sum = 0;
+        var vs = 0, variance = 0, sdev = 0, width = 0, previous = 0, me = 0, err = 0, p = 0, war = 0, mi = 0, a = 0, up = 0, down = 0;
+        l = x.length;
+        var tab = window.open('about:blank', '_blank');
+
+        for (var i = 0; i < l; i++) {
+
+            //liczenie Średniej i wariancji z 10 ostatnich wartości
+            sum = sum + x[i];     //suma ostatnich 10 wartości
+            if (i > 8) {
+                avr[i] = sum / 10; //srednia gdy mamy wiecej niż 9 pomiarów (tj. 10)
+                vs = vs + Math.pow((x[i] - avr[i - 1]), 2); //suma ostatnich 10 wartości pomniejszonych o średnią i podniesionych do kwadratu
+                variance = vs / 10;  //wariancja
+                sum = sum - x[i - 9]; //odejmowanie początkowej wartości x tak, żeby zawsze było 10 różnych wartości
+                vs = vs - Math.pow((x[i - 8] - avr[i - 9]), 2); //odejmowanie początkowej wartości vs tak, żeby zawsze było 10 różnych wartości
+                sdev = Math.sqrt(variance);  //liczenie odchylenia standardowego z 10 ostatnich wartości
+                width = sigma * sdev; //ustalanie szerokości zakresu sigma * odchylenie standardowe
+            }
+            else {
+                avr[i] = sum / (i + 1); // srednia gdy mamy mniej niż 10 wartości
+                width = 2.0;
+            }
+
+            //console.log("I "+ i ," wartosc danej T " + x[i], " SUMA " + sum, " ŚRed "+ vs, " warto sdev " + sdev);
+            up = avr[i] + width; //ustalenie górnej granicy wynikającej z obliczeń
+            down = avr[i] - width; //ustalenie dolnej granicy wynikającej z obliczeń
+            diag[i] = new Array(5); //stworzenie 4 elemetowego wektora
+
+            //console.log("wartosc T " + x[i]," Data  : " + y[i]);
+            //sprawdzenie czy nowa wartość wychodzi za ustalone zakresy, oraz przekrocza granice
+            if (x[i] > up || x[i] < down || x[i] < down_li || x[i] > up_li) {
+
+                avr[i] = avr[i].toFixed(4); //zaokrąglenie do 4 miejsc po przecinku sredniej
+                width = width.toFixed(4); //zaokrąglenie do 4 miejsc po przecinku szerokosci przedzialu
+                up = up.toFixed(4); //zaokrąglenie do 4 miejsc po przecinku górnej granicy - wynikającej z obliczeń
+                down = down.toFixed(4); //zaokrąglenie do 4 miejsc po przecinku dolnej granicy - wynikającej z obliczeń
+                tab.document.write("Dane z " + name + " wartosc " + x[i] + " Poprzednia wartosc " + x[i - 1] + " Data  : " + y[i], " wart me " + me + " AVR " + avr[i] + " width " + width + " StanDev " + sdev + " góra " + up + " dół " + down + "<br>");
+
+                if (i > mi + 10) {
+                    me = 0;
+                }
+                //bez zmian złych wartości
+                mi = i; //zapamiętanie ostatniego i, które spełniało warunek wejścia zabezpieczenie przed pamiętaniem me
+                me++; //licznik sprawdzający ile razy mamy powtórzenie poprzedniej wartości
+                if (me == 1) {
+                    //console.log("wartosc " + x[i], " Data  : " + y[i], " wart me " + me, " Nazwa " + name); //wyświetlane tylko za pierwszym wystąpieniem w danym miejscu
+                }
+                if (me == 10) {
+                    // jeżeli przez 10 cykli jest ta sama wielkość to error
+                    err++; //ilość błędów
+                    console.log(name + " Data błedu = " + y[i]);
+                    console.log(name + " Wartość błedu = " + x[i]);
+                    me = 0; //zerowanie licznika
+                }
+
+                //przepisanie wartości daty, średniej, zakres -> gdy jest ostrzeżenie
+
+
+                war++;  // ilość ostrzeżeń
+
+
+                diag[i][2] = y[i];         //przepisanie daty
+                diag[i][3] = width;        //przepisanie wartości width - szerokość zakresu
+                diag[i][4] = war;         //przepisanie ilości ostrzeżeń
+
+
+
+            }
+
+            if (previous == x[i] && name == "GPS") { //sprawdzenie czy poprzednia wartość jest równa nowej i czy występuje to przy danych z GPS
+                p++; //licznik sprawdzający ile razy mamy powtórzenie poprzedniej wartości
+                if (p == 10) { //gdy wartość powtórzy się 10 razy pojawi się błąd
+                    //vs = 0; //zerowanie vs - żeby zwiększyć jakość diagnostyki
+
+                    if (name == "GPS") {
+                        err++; //ilość błędów
+                        console.log("data blędu " + y[i]); //przepisanie daty do danego błędu
+                    }
+                    p = 0; //zerowanie licznika
+                }
+
+            }
+            previous = x[i]; //na końcu przypisujemy ostatnią wartość do zmiennej previous
+        }
+
+        console.log(name + " Ilość errorów = " + err);
+        console.log(name + " ile razy = " + war);
+        diag[0][0] = err;
+        diag[0][1] = war;
+        tab.document.close();
+        return diag;
+
+
+    }
+
+</script>

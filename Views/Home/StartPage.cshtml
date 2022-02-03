@@ -1,0 +1,259 @@
+﻿@{
+    ViewBag.Title = "StartPage";
+}
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+<script src="https://code.highcharts.com/stock/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+
+<script src="https://www.highcharts.com/samples/static/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/samples/static/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/samples/static/highslide.css" />
+
+<div class="container">
+    <div class="heading1">
+        <h1>Katamaran 2020 <br />autonomiczny system do badań w zbiornikach wodnych</h1>
+    </div>
+    <div class="content">
+
+        <div class="Lefttx">
+            Głównym celem projektu było ulepszenie jednostki pływającej
+            - katamaranu i przetestowanie go w rzeczywistych
+            warunkach oraz wykonanie badań fizykochemicznych
+            i biologicznych wodnych zbiorników zapadliskowych w Tychach
+            Czułowie. Zbiorniki stanowiły cztery jeziora, z których do dwóch
+            dopływały wody kopalniane. Ponadto analizowano wody
+            rzeki Mlecznej, która jest odbiornikiem wód spływających
+            z w/w jezior. Powstanie zbiorników związane jest z działaniem
+            kopalni, umiejscowionej na terenie Katowic. Kopalnia ta od kilku
+            lat jest nieczynna, lecz ciągle na powierzchnię wydobywane
+            są wody z jej odwadniana. Zbiorniki wodne powstały w wyniku
+            zapadania się terenu, poprzez wydobycie węgla kamiennego
+            w latach 70 XX wieku, w rejonie rzeki Mlecznej i jej dopływu.
+            Niecka zapadliskowa podzielona jest na trzy części, których
+            środkiem płynie rzeka Mleczna. Poszczególne zbiorniki noszą
+            nazwy „Zapadlisko”, „Karton” i „Ochotka”. Wielkość powstałych
+            zbiorników ma powierzchnię odpowiednią 8, 5 ha, 5 ha oraz 2 ha.
+            <br /> <br />
+            Katamaran w przyszłości może być dalej wykorzystywany do
+            badania jakości wód w jeziorach. Stworzony system do kalibracji,
+            oprogramowanie do analizy oraz mapy pozwalają na sprawne
+            przeprowadzenie pomiarów oraz analizę danych wraz z szybkim
+            otrzymaniem wyników.
+
+        </div>
+        <div class="RightPicture">
+
+            <img src="~/Pictures/KatamaranNasz.png" alt="Zdjęcie Katamaranu" />
+
+        </div>
+        <div class="Charts">
+            <figure class="highcharts-figure">
+                <div id="container4"></div>
+
+            </figure>
+
+        </div>
+ 
+    </div>
+
+
+</div>
+
+<style>
+    .container {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .heading1 {
+        color: #555;
+        float: left;
+        width: 1000px;
+        height: 120px;
+        margin-left: auto;
+    }
+
+    .content {
+        width: 1000px;
+        margin-left: auto;
+        height: 900px;
+    }
+
+    .Lefttx {
+        float: left;
+        width: 400px;
+        height: 500px;
+        text-align: left;
+        margin: auto;
+        text-align: justify;
+        border-width: 3px; /*Grubość ramki*/
+        border-right-style: solid; /*Obramowanie prawej strony*/
+        border-color: white;
+    }
+
+    .RightPicture {
+        margin-left: auto;
+        height: 500px;
+        float: left;
+        width: 600px;
+    }
+    
+    .Charts {
+        margin-left: auto;
+        height: 400px;
+        float: left;
+        width: 1000px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<script>
+    Highcharts.chart('container4', {
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 600,
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Air temperature during two days',
+            align: 'left'
+        },
+        subtitle: {
+            text: '13th & 14th of February, 2018',
+            align: 'left'
+        },
+        xAxis: {
+            type: 'datetime',
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Air temperature (°C)'
+            },
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [{ // Very strong frost
+                from: -100,
+                to: -11.5,
+                color: 'rgba(7, 63, 166, 0.1)',
+                label: {
+                    text: 'Very strong frost',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }, { // Strong frost
+                    from: -11.5,
+                    to: -6.6,
+                    color: 'rgba(10, 89, 235, 0.1)',
+                    label: {
+                        text: 'Strong frost',
+                        style: {
+                            color: '#606060'
+                        }
+                    }
+                }, { // Moderate frost
+                    from: -6.5,
+                    to: -3.6,
+                    color: 'rgba(68, 170, 213, 0.1)',
+                    label: {
+                        text: 'Moderate frost',
+                        style: {
+                            color: '#606060'
+                        }
+                    }
+                }, { // Light frost
+                    from: -3.5,
+                    to: 0,
+                    color: 'rgba(0, 0, 0, 0)',
+                    label: {
+                        text: 'Light frost',
+                        style: {
+                            color: '#606060'
+                        }
+                    }
+                }, { // Optimal temperature
+                from: 0,
+                to: 28,
+                    color: 'rgba(51, 193, 94, 0.1)',
+                label: {
+                    text: 'Optimal temperature',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }, { // Heat
+                from: 28,
+                to: 400,
+                    color: 'rgba(255, 92, 105, 0.1)',
+                label: {
+                    text: 'Heat',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                },
+                pointInterval: 3600000, // one hour
+                pointStart: Date.UTC(2018, 1, 13, 0, 0, 0)
+            }
+        },
+        series: [{
+            name: 'Measurement 1',
+            data: [
+                -0.4, - 0.5, - 0.48, - 0.5, - 0.52, - 0.54, - 0.56, - 0.58, - 0.6, - 4,
+                - 4.64, - 4.66, - 4.68, - 4.7, - 0.72, - 0.74, - 0.76, - 0.78, - 0.8, - 0.82,
+                - 0.84, - 0.86, - 0.88, - 0.9, - 0.92, - 0.94, - 0.96, - 0.98, 4, - 1.02,
+                - 1.04, - 1.06, - 1.08, - 1.1, - 1.12, - 1.14, - 1.16, - 1.18, - 1.2,
+                - 1.22, -0.5, -0.2, 0.1, 0.9, 1, 0.8, 0.7, -0.1, 0.3
+            ]
+
+        }, {
+                name: 'Measurement 2',
+            data: [
+                -38, -38, -38, -38, -39, -38, -38, -38, -38, -40, -38, 0.2,
+                0.3, 0.1, 0.3, 0.4, 0.3, 0.2, 0.3, 0.2, 0.4, 0.0, 0.9, 0.3,
+                0.7, 1.1, 1.8, 1.2, 1.4, 1.2, 0.9, 0.8, 12, 0.2, 0.4, 1.2,
+                0.3, 2.3, 1.0, 0.7, 1.0, 0.8, 34, 1.2, 1.4, 3.7, 25, 2.0,
+                1.5
+            ]
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    });
+
+
+</script>

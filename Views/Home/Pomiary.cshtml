@@ -1,0 +1,449 @@
+﻿@{
+    ViewBag.Title = "Pomiary";
+}
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+
+<div id="container" style="height: 400px; min-width: 310px"></div>
+<script src="math.js" type="text/javascript"></script>
+
+<script src="https://www.highcharts.com/samples/static/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/samples/static/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/samples/static/highslide.css" />
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+</figure>
+
+<figure class="highcharts-figure">
+    <div id="container2"></div>
+</figure>
+
+<figure class="highcharts-figure">
+    <div id="container3"></div>
+</figure>
+
+
+<figure class="highcharts-figure">
+    <div id="container4"></div>
+
+</figure>
+
+<!-- Wykres Jonoselektywny -->
+<script>
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetData", function (data) {
+            //a = data.length - 500;
+            //console.log("Długość " + data.length, " -500   " + a);
+
+            var dateTime = []
+            var mv0array = []
+            var mv1array = []
+            var mv2array = []
+            var mv3array = []
+            var mv4array = []
+            var mv5array = []
+            var mv6array = []
+            for (var i = data.length - 885; i < data.length; i++) {
+                dateTime.push(data[i].date);
+
+                mv0array.push(data[i].mv0);
+                mv1array.push(data[i].mv1);
+                mv2array.push(data[i].mv2);
+                mv3array.push(data[i].mv3);
+                mv4array.push(data[i].mv4);
+                mv5array.push(data[i].mv5);
+                mv6array.push(data[i].mv6);
+
+
+
+
+            }
+
+
+
+
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'line',
+                    zoomType: 'x'
+                },
+                title: {
+                    text: 'IonSelectiveMeasurements'
+                },
+
+                xAxis: {
+
+                    tickPixelInterval: 400,
+                    categories: dateTime
+                },
+
+
+
+                yAxis: {
+                    title: {
+                        text: 'Napięcie [mV]'
+                    }
+                },
+
+
+                rangeSelector: {
+                    floating: true,
+                    y: -65,
+                    verticalAlign: 'top'
+                },
+
+
+
+
+
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: true
+                    }
+                },
+                series: [{
+                    name: 'mv0',
+                    data: mv0array
+                }, {
+                    name: 'mv1',
+                    data: mv1array
+                }, {
+                    name: 'mv2',
+                    data: mv2array
+                }, {
+                    name: 'mv3',
+                    data: mv3array
+                }, {
+                    name: 'mv4',
+                    data: mv4array
+                }, {
+                    name: 'mv5',
+                    data: mv5array
+                }, {
+                    name: 'mv6',
+                    data: mv6array
+                }]
+            });
+        });
+    });
+
+
+</script>
+
+<!-- Wykres Elmetron -->
+<script>
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromElmetron", function (data) {
+
+            var dateTime = []
+            var O2array = []
+            var Tarray = []
+            var PHarray = []
+            var mVarray = []
+            var CONarray = []
+            //var ID = []
+            for (var i = data.length - 918; i < data.length; i++) {
+                //ID.push(data[i].ID);
+                dateTime.push(data[i].date);
+                O2array.push(data[i].O2);
+                Tarray.push(data[i].temperature);
+                PHarray.push(data[i].PH);
+                mVarray.push(data[i].mV);
+                CONarray.push(data[i].Conductivity);
+                //console.log("DATA = " + i, " oto data : " + data[i].date);
+            }
+            //console.log("wartość ID = " + ID);
+
+
+
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'line',
+                    zoomType: 'x'
+                },
+                title: {
+                    text: 'ElmetronMeasurement'
+                },
+
+                xAxis: {
+
+                    tickPixelInterval: 400,
+                    categories: dateTime
+                },
+
+
+
+                yAxis: {
+                    title: {
+                        text: 'Temperatura [°C]'
+                    }
+                },
+
+
+                rangeSelector: {
+                    floating: true,
+                    y: -65,
+                    verticalAlign: 'top'
+                },
+
+
+
+
+
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: true
+                    }
+                },
+                series: [{
+                    name: 'O2',
+                    data: O2array
+                },
+                {
+                    name: 'PH',
+                    data: PHarray
+                },
+                {
+                    name: 'mV',
+                    data: mVarray
+                },
+                {
+                    name: 'Conductivity',
+                    data: CONarray
+                },
+                {
+                    name: 'T',
+                    data: Tarray
+                }]
+            });
+        });
+    });
+
+
+</script>
+
+<!-- Wykres DeepModules -->
+<script>
+    $(document).ready(function () {
+
+        $.getJSON("/Home/GetDataFromDeepModules", function (data) {
+
+            var dateTime = []
+            var TemperatureArray = []
+
+            for (var i = 0; i < data.length; i++) {
+                dateTime.push(data[i].date);
+
+                TemperatureArray.push(data[i].Temperature);
+
+            }
+
+            Highcharts.chart('container3', {
+                chart: {
+                    type: 'line',
+                    zoomType: 'x'
+                },
+                title: {
+                    text: 'DeepModules'
+                },
+
+                xAxis: {
+
+                    tickPixelInterval: 400,
+                    categories: dateTime
+                },
+
+
+
+                yAxis: {
+                    title: {
+                        text: 'Temperatura (°C)'
+                    }
+                },
+
+
+                rangeSelector: {
+                    floating: true,
+                    y: -65,
+                    verticalAlign: 'top'
+                },
+
+
+
+
+
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        enableMouseTracking: true
+                    }
+                },
+                series: [{
+                    name: 'Temperature',
+                    data: TemperatureArray
+                }]
+            });
+        });
+    });
+
+
+</script>
+
+<!-- Wykres Podzielony z opisami -->
+<script>
+    Highcharts.chart('container4', {
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 600,
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Air temperature during two days',
+            align: 'left'
+        },
+        subtitle: {
+            text: '13th & 14th of February, 2018',
+            align: 'left'
+        },
+        xAxis: {
+            type: 'datetime',
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Air temperature (°C)'
+            },
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [{ // Very strong frost
+                from: -100,
+                to: -11.5,
+                color: 'rgba(7, 63, 166, 0.1)',
+                label: {
+                    text: 'Very strong frost',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }, { // Strong frost
+                from: -11.5,
+                to: -6.6,
+                color: 'rgba(10, 89, 235, 0.1)',
+                label: {
+                    text: 'Strong frost',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }, { // Moderate frost
+                from: -6.5,
+                to: -3.6,
+                color: 'rgba(68, 170, 213, 0.1)',
+                label: {
+                    text: 'Moderate frost',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }, { // Light frost
+                from: -3.5,
+                to: 0,
+                color: 'rgba(0, 0, 0, 0)',
+                label: {
+                    text: 'Light frost',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }, { // Optimal temperature
+                from: 0,
+                to: 28,
+                color: 'rgba(51, 193, 94, 0.1)',
+                label: {
+                    text: 'Optimal temperature',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }, { // Heat
+                from: 28,
+                to: 400,
+                color: 'rgba(255, 92, 105, 0.1)',
+                label: {
+                    text: 'Heat',
+                    style: {
+                        color: '#606060'
+                    }
+                }
+            }]
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                },
+                pointInterval: 3600000, // one hour
+                pointStart: Date.UTC(2018, 1, 13, 0, 0, 0)
+            }
+        },
+        series: [{
+            name: 'Measurement 1',
+            data: [
+                -0.4, - 0.5, - 0.48, - 0.5, - 0.52, - 0.54, - 0.56, - 0.58, - 0.6, - 4,
+                - 4.64, - 4.66, - 4.68, - 4.7, - 0.72, - 0.74, - 0.76, - 0.78, - 0.8, - 0.82,
+                - 0.84, - 0.86, - 0.88, - 0.9, - 0.92, - 0.94, - 0.96, - 0.98, 4, - 1.02,
+                - 1.04, - 1.06, - 1.08, - 1.1, - 1.12, - 1.14, - 1.16, - 1.18, - 1.2,
+                - 1.22, -0.5, -0.2, 0.1, 0.9, 1, 0.8, 0.7, -0.1, 0.3
+            ]
+
+        }, {
+            name: 'Measurement 2',
+            data: [
+                -38, -38, -38, -38, -39, -38, -38, -38, -38, -40, -38, 0.2,
+                0.3, 0.1, 0.3, 0.4, 0.3, 0.2, 0.3, 0.2, 0.4, 0.0, 0.9, 0.3,
+                0.7, 1.1, 1.8, 1.2, 1.4, 1.2, 0.9, 0.8, 12, 0.2, 0.4, 1.2,
+                0.3, 2.3, 1.0, 0.7, 1.0, 0.8, 34, 1.2, 1.4, 3.7, 25, 2.0,
+                1.5
+            ]
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    });
+
+
+</script>

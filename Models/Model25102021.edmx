@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Katamaran25102021Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.DeepModule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DeepModule">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="REQ_TIME" Type="datetime" />
+          <Property Name="RESP_TIME" Type="datetime" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" Nullable="false" />
+          <Property Name="H_set" Type="real" />
+          <Property Name="H_act" Type="real" />
+          <Property Name="Temperature" Type="real" />
+          <Property Name="Encoder1" Type="int" />
+          <Property Name="Encoder2" Type="int" />
+          <Property Name="Modulestatus" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.ElmetronMeasurements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ElmetronMeasurements">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="REQ_TIME" Type="datetime" />
+          <Property Name="RESP_TIME" Type="datetime" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" Nullable="false" />
+          <Property Name="pH" Type="real" />
+          <Property Name="Temperature" Type="real" />
+          <Property Name="Conductivity" Type="real" />
+          <Property Name="OxygenContent" Type="int" />
+          <Property Name="mV" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.IonSelectiveMeasurements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IonSelectiveMeasurements">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="REQ_TIME" Type="datetime" />
+          <Property Name="RESP_TIME" Type="datetime" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" Nullable="false" />
+          <Property Name="IS_CH0" Type="real" />
+          <Property Name="IS_CH1" Type="real" />
+          <Property Name="IS_CH2" Type="real" />
+          <Property Name="IS_CH3" Type="real" />
+          <Property Name="IS_CH4" Type="real" />
+          <Property Name="IS_CH5" Type="real" />
+          <Property Name="IS_CH6" Type="real" />
+          <Property Name="IS_CH7" Type="real" />
+          <Property Name="mV_CH0" Type="real" />
+          <Property Name="mV_CH1" Type="real" />
+          <Property Name="mV_CH2" Type="real" />
+          <Property Name="mV_CH3" Type="real" />
+          <Property Name="mV_CH4" Type="real" />
+          <Property Name="mV_CH5" Type="real" />
+          <Property Name="mV_CH6" Type="real" />
+          <Property Name="mV_CH7" Type="real" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.MeasurementsRAW Kwerenda' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MeasurementsRAW Kwerenda">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="COMPLETED" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="REQUEST" Type="nvarchar" MaxLength="255" />
+          <Property Name="REQ_TIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESPONSE" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESP_TIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="COMPLETED" Type="bit" Nullable="false" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION1" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" Nullable="false" />
+          <Property Name="ENG_LEFT" Type="smallint" />
+          <Property Name="ENG_RIGHT" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.ModbusFrames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ModbusFrames">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="COMPLETED" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="REQUEST" Type="nvarchar" MaxLength="255" />
+          <Property Name="REQ_TIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESPONSE" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESP_TIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="COMPLETED" Type="bit" Nullable="false" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION1" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" Nullable="false" />
+          <Property Name="ENG_LEFT" Type="smallint" />
+          <Property Name="ENG_RIGHT" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.Polls' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Polls">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="COMPLETED" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="REQUEST" Type="nvarchar" MaxLength="255" />
+          <Property Name="REQ_TIME" Type="datetime" />
+          <Property Name="RESPONSE" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESP_TIME" Type="datetime" />
+          <Property Name="STATUS" Type="int" />
+          <Property Name="COMPLETED" Type="bit" Nullable="false" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" Nullable="false" />
+          <Property Name="ENG_LEFT" Type="smallint" />
+          <Property Name="ENG_RIGHT" Type="smallint" />
+          <Property Name="ACCU_VOLTAGE" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.RESET ID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RESET ID">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="REQ_TIME" Type="datetime" />
+          <Property Name="RESP_TIME" Type="datetime" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" Nullable="false" />
+          <Property Name="H_set" Type="real" />
+          <Property Name="H_act" Type="real" />
+          <Property Name="Temperature" Type="real" />
+          <Property Name="Encoder1" Type="int" />
+          <Property Name="Encoder2" Type="int" />
+          <Property Name="Modulestatus" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Katamaran25102021.dbo.Status' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="STATUS CODE" Type="int" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Katamaran25102021ModelStoreContainer">
+          <EntitySet Name="DeepModule" EntityType="Self.DeepModule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DeepModule].[ID] AS [ID], 
+    [DeepModule].[REQ_TIME] AS [REQ_TIME], 
+    [DeepModule].[RESP_TIME] AS [RESP_TIME], 
+    [DeepModule].[LONGITUDE] AS [LONGITUDE], 
+    [DeepModule].[LATITUDE] AS [LATITUDE], 
+    [DeepModule].[HEADING] AS [HEADING], 
+    [DeepModule].[DESCRIPTION] AS [DESCRIPTION], 
+    [DeepModule].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [DeepModule].[H_set] AS [H_set], 
+    [DeepModule].[H_act] AS [H_act], 
+    [DeepModule].[Temperature] AS [Temperature], 
+    [DeepModule].[Encoder1] AS [Encoder1], 
+    [DeepModule].[Encoder2] AS [Encoder2], 
+    [DeepModule].[Modulestatus] AS [Modulestatus]
+    FROM [dbo].[DeepModule] AS [DeepModule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ElmetronMeasurements" EntityType="Self.ElmetronMeasurements" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ElmetronMeasurements].[ID] AS [ID], 
+    [ElmetronMeasurements].[REQ_TIME] AS [REQ_TIME], 
+    [ElmetronMeasurements].[RESP_TIME] AS [RESP_TIME], 
+    [ElmetronMeasurements].[LONGITUDE] AS [LONGITUDE], 
+    [ElmetronMeasurements].[LATITUDE] AS [LATITUDE], 
+    [ElmetronMeasurements].[HEADING] AS [HEADING], 
+    [ElmetronMeasurements].[DESCRIPTION] AS [DESCRIPTION], 
+    [ElmetronMeasurements].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [ElmetronMeasurements].[pH] AS [pH], 
+    [ElmetronMeasurements].[Temperature] AS [Temperature], 
+    [ElmetronMeasurements].[Conductivity] AS [Conductivity], 
+    [ElmetronMeasurements].[OxygenContent] AS [OxygenContent], 
+    [ElmetronMeasurements].[mV] AS [mV]
+    FROM [dbo].[ElmetronMeasurements] AS [ElmetronMeasurements]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IonSelectiveMeasurements" EntityType="Self.IonSelectiveMeasurements" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IonSelectiveMeasurements].[ID] AS [ID], 
+    [IonSelectiveMeasurements].[REQ_TIME] AS [REQ_TIME], 
+    [IonSelectiveMeasurements].[RESP_TIME] AS [RESP_TIME], 
+    [IonSelectiveMeasurements].[LONGITUDE] AS [LONGITUDE], 
+    [IonSelectiveMeasurements].[LATITUDE] AS [LATITUDE], 
+    [IonSelectiveMeasurements].[HEADING] AS [HEADING], 
+    [IonSelectiveMeasurements].[DESCRIPTION] AS [DESCRIPTION], 
+    [IonSelectiveMeasurements].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [IonSelectiveMeasurements].[IS_CH0] AS [IS_CH0], 
+    [IonSelectiveMeasurements].[IS_CH1] AS [IS_CH1], 
+    [IonSelectiveMeasurements].[IS_CH2] AS [IS_CH2], 
+    [IonSelectiveMeasurements].[IS_CH3] AS [IS_CH3], 
+    [IonSelectiveMeasurements].[IS_CH4] AS [IS_CH4], 
+    [IonSelectiveMeasurements].[IS_CH5] AS [IS_CH5], 
+    [IonSelectiveMeasurements].[IS_CH6] AS [IS_CH6], 
+    [IonSelectiveMeasurements].[IS_CH7] AS [IS_CH7], 
+    [IonSelectiveMeasurements].[mV_CH0] AS [mV_CH0], 
+    [IonSelectiveMeasurements].[mV_CH1] AS [mV_CH1], 
+    [IonSelectiveMeasurements].[mV_CH2] AS [mV_CH2], 
+    [IonSelectiveMeasurements].[mV_CH3] AS [mV_CH3], 
+    [IonSelectiveMeasurements].[mV_CH4] AS [mV_CH4], 
+    [IonSelectiveMeasurements].[mV_CH5] AS [mV_CH5], 
+    [IonSelectiveMeasurements].[mV_CH6] AS [mV_CH6], 
+    [IonSelectiveMeasurements].[mV_CH7] AS [mV_CH7]
+    FROM [dbo].[IonSelectiveMeasurements] AS [IonSelectiveMeasurements]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MeasurementsRAW Kwerenda" EntityType="Self.MeasurementsRAW Kwerenda" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MeasurementsRAW Kwerenda].[ID] AS [ID], 
+    [MeasurementsRAW Kwerenda].[REQUEST] AS [REQUEST], 
+    [MeasurementsRAW Kwerenda].[REQ_TIME] AS [REQ_TIME], 
+    [MeasurementsRAW Kwerenda].[RESPONSE] AS [RESPONSE], 
+    [MeasurementsRAW Kwerenda].[RESP_TIME] AS [RESP_TIME], 
+    [MeasurementsRAW Kwerenda].[DESCRIPTION] AS [DESCRIPTION], 
+    [MeasurementsRAW Kwerenda].[COMPLETED] AS [COMPLETED], 
+    [MeasurementsRAW Kwerenda].[PRIORITY] AS [PRIORITY], 
+    [MeasurementsRAW Kwerenda].[LONGITUDE] AS [LONGITUDE], 
+    [MeasurementsRAW Kwerenda].[LATITUDE] AS [LATITUDE], 
+    [MeasurementsRAW Kwerenda].[HEADING] AS [HEADING], 
+    [MeasurementsRAW Kwerenda].[DESCRIPTION1] AS [DESCRIPTION1], 
+    [MeasurementsRAW Kwerenda].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [MeasurementsRAW Kwerenda].[ENG_LEFT] AS [ENG_LEFT], 
+    [MeasurementsRAW Kwerenda].[ENG_RIGHT] AS [ENG_RIGHT]
+    FROM [dbo].[MeasurementsRAW Kwerenda] AS [MeasurementsRAW Kwerenda]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ModbusFrames" EntityType="Self.ModbusFrames" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ModbusFrames].[ID] AS [ID], 
+    [ModbusFrames].[REQUEST] AS [REQUEST], 
+    [ModbusFrames].[REQ_TIME] AS [REQ_TIME], 
+    [ModbusFrames].[RESPONSE] AS [RESPONSE], 
+    [ModbusFrames].[RESP_TIME] AS [RESP_TIME], 
+    [ModbusFrames].[DESCRIPTION] AS [DESCRIPTION], 
+    [ModbusFrames].[COMPLETED] AS [COMPLETED], 
+    [ModbusFrames].[PRIORITY] AS [PRIORITY], 
+    [ModbusFrames].[LONGITUDE] AS [LONGITUDE], 
+    [ModbusFrames].[LATITUDE] AS [LATITUDE], 
+    [ModbusFrames].[HEADING] AS [HEADING], 
+    [ModbusFrames].[DESCRIPTION1] AS [DESCRIPTION1], 
+    [ModbusFrames].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [ModbusFrames].[ENG_LEFT] AS [ENG_LEFT], 
+    [ModbusFrames].[ENG_RIGHT] AS [ENG_RIGHT]
+    FROM [dbo].[ModbusFrames] AS [ModbusFrames]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Polls" EntityType="Self.Polls" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Polls].[ID] AS [ID], 
+    [Polls].[REQUEST] AS [REQUEST], 
+    [Polls].[REQ_TIME] AS [REQ_TIME], 
+    [Polls].[RESPONSE] AS [RESPONSE], 
+    [Polls].[RESP_TIME] AS [RESP_TIME], 
+    [Polls].[STATUS] AS [STATUS], 
+    [Polls].[COMPLETED] AS [COMPLETED], 
+    [Polls].[PRIORITY] AS [PRIORITY], 
+    [Polls].[LONGITUDE] AS [LONGITUDE], 
+    [Polls].[LATITUDE] AS [LATITUDE], 
+    [Polls].[HEADING] AS [HEADING], 
+    [Polls].[DESCRIPTION] AS [DESCRIPTION], 
+    [Polls].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [Polls].[ENG_LEFT] AS [ENG_LEFT], 
+    [Polls].[ENG_RIGHT] AS [ENG_RIGHT], 
+    [Polls].[ACCU_VOLTAGE] AS [ACCU_VOLTAGE]
+    FROM [dbo].[Polls] AS [Polls]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RESET ID" EntityType="Self.RESET ID" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RESET ID].[ID] AS [ID], 
+    [RESET ID].[REQ_TIME] AS [REQ_TIME], 
+    [RESET ID].[RESP_TIME] AS [RESP_TIME], 
+    [RESET ID].[LONGITUDE] AS [LONGITUDE], 
+    [RESET ID].[LATITUDE] AS [LATITUDE], 
+    [RESET ID].[HEADING] AS [HEADING], 
+    [RESET ID].[DESCRIPTION] AS [DESCRIPTION], 
+    [RESET ID].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [RESET ID].[H_set] AS [H_set], 
+    [RESET ID].[H_act] AS [H_act], 
+    [RESET ID].[Temperature] AS [Temperature], 
+    [RESET ID].[Encoder1] AS [Encoder1], 
+    [RESET ID].[Encoder2] AS [Encoder2], 
+    [RESET ID].[Modulestatus] AS [Modulestatus]
+    FROM [dbo].[RESET ID] AS [RESET ID]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Status" EntityType="Self.Status" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Status].[ID] AS [ID], 
+    [Status].[STATUS CODE] AS [STATUS CODE], 
+    [Status].[DESCRIPTION] AS [DESCRIPTION]
+    FROM [dbo].[Status] AS [Status]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Katamaran25102021Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DeepModule">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="3" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="3" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" Nullable="false" />
+          <Property Name="H_set" Type="Single" />
+          <Property Name="H_act" Type="Single" />
+          <Property Name="Temperature" Type="Single" />
+          <Property Name="Encoder1" Type="Int32" />
+          <Property Name="Encoder2" Type="Int32" />
+          <Property Name="Modulestatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ElmetronMeasurements">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="3" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="3" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" Nullable="false" />
+          <Property Name="pH" Type="Single" />
+          <Property Name="Temperature" Type="Single" />
+          <Property Name="Conductivity" Type="Single" />
+          <Property Name="OxygenContent" Type="Int32" />
+          <Property Name="mV" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IonSelectiveMeasurements">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="3" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="3" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" Nullable="false" />
+          <Property Name="IS_CH0" Type="Single" />
+          <Property Name="IS_CH1" Type="Single" />
+          <Property Name="IS_CH2" Type="Single" />
+          <Property Name="IS_CH3" Type="Single" />
+          <Property Name="IS_CH4" Type="Single" />
+          <Property Name="IS_CH5" Type="Single" />
+          <Property Name="IS_CH6" Type="Single" />
+          <Property Name="IS_CH7" Type="Single" />
+          <Property Name="mV_CH0" Type="Single" />
+          <Property Name="mV_CH1" Type="Single" />
+          <Property Name="mV_CH2" Type="Single" />
+          <Property Name="mV_CH3" Type="Single" />
+          <Property Name="mV_CH4" Type="Single" />
+          <Property Name="mV_CH5" Type="Single" />
+          <Property Name="mV_CH6" Type="Single" />
+          <Property Name="mV_CH7" Type="Single" />
+        </EntityType>
+        <EntityType Name="MeasurementsRAW_Kwerenda">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="COMPLETED" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="REQUEST" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REQ_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESPONSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESP_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="COMPLETED" Type="Boolean" Nullable="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" Nullable="false" />
+          <Property Name="ENG_LEFT" Type="Int16" />
+          <Property Name="ENG_RIGHT" Type="Int16" />
+        </EntityType>
+        <EntityType Name="ModbusFrames">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="COMPLETED" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="REQUEST" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REQ_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESPONSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESP_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="COMPLETED" Type="Boolean" Nullable="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" Nullable="false" />
+          <Property Name="ENG_LEFT" Type="Int16" />
+          <Property Name="ENG_RIGHT" Type="Int16" />
+        </EntityType>
+        <EntityType Name="Polls">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="COMPLETED" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="REQUEST" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="3" />
+          <Property Name="RESPONSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="3" />
+          <Property Name="STATUS" Type="Int32" />
+          <Property Name="COMPLETED" Type="Boolean" Nullable="false" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" Nullable="false" />
+          <Property Name="ENG_LEFT" Type="Int16" />
+          <Property Name="ENG_RIGHT" Type="Int16" />
+          <Property Name="ACCU_VOLTAGE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RESET_ID">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="VALIDMEASURES" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="3" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="3" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" Nullable="false" />
+          <Property Name="H_set" Type="Single" />
+          <Property Name="H_act" Type="Single" />
+          <Property Name="Temperature" Type="Single" />
+          <Property Name="Encoder1" Type="Int32" />
+          <Property Name="Encoder2" Type="Int32" />
+          <Property Name="Modulestatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="Int32" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Katamaran25102021Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DeepModule" EntityType="Self.DeepModule" />
+          <EntitySet Name="ElmetronMeasurements" EntityType="Self.ElmetronMeasurements" />
+          <EntitySet Name="IonSelectiveMeasurements" EntityType="Self.IonSelectiveMeasurements" />
+          <EntitySet Name="MeasurementsRAW_Kwerenda" EntityType="Self.MeasurementsRAW_Kwerenda" />
+          <EntitySet Name="ModbusFrames" EntityType="Self.ModbusFrames" />
+          <EntitySet Name="Polls" EntityType="Self.Polls" />
+          <EntitySet Name="RESET_ID" EntityType="Self.RESET_ID" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Katamaran25102021ModelStoreContainer" CdmEntityContainer="Katamaran25102021Entities">
+          <EntitySetMapping Name="DeepModule">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.DeepModule">
+              <MappingFragment StoreEntitySet="DeepModule">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="H_set" ColumnName="H_set" />
+                <ScalarProperty Name="H_act" ColumnName="H_act" />
+                <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+                <ScalarProperty Name="Encoder1" ColumnName="Encoder1" />
+                <ScalarProperty Name="Encoder2" ColumnName="Encoder2" />
+                <ScalarProperty Name="Modulestatus" ColumnName="Modulestatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ElmetronMeasurements">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.ElmetronMeasurements">
+              <MappingFragment StoreEntitySet="ElmetronMeasurements">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="pH" ColumnName="pH" />
+                <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+                <ScalarProperty Name="Conductivity" ColumnName="Conductivity" />
+                <ScalarProperty Name="OxygenContent" ColumnName="OxygenContent" />
+                <ScalarProperty Name="mV" ColumnName="mV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IonSelectiveMeasurements">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.IonSelectiveMeasurements">
+              <MappingFragment StoreEntitySet="IonSelectiveMeasurements">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="IS_CH0" ColumnName="IS_CH0" />
+                <ScalarProperty Name="IS_CH1" ColumnName="IS_CH1" />
+                <ScalarProperty Name="IS_CH2" ColumnName="IS_CH2" />
+                <ScalarProperty Name="IS_CH3" ColumnName="IS_CH3" />
+                <ScalarProperty Name="IS_CH4" ColumnName="IS_CH4" />
+                <ScalarProperty Name="IS_CH5" ColumnName="IS_CH5" />
+                <ScalarProperty Name="IS_CH6" ColumnName="IS_CH6" />
+                <ScalarProperty Name="IS_CH7" ColumnName="IS_CH7" />
+                <ScalarProperty Name="mV_CH0" ColumnName="mV_CH0" />
+                <ScalarProperty Name="mV_CH1" ColumnName="mV_CH1" />
+                <ScalarProperty Name="mV_CH2" ColumnName="mV_CH2" />
+                <ScalarProperty Name="mV_CH3" ColumnName="mV_CH3" />
+                <ScalarProperty Name="mV_CH4" ColumnName="mV_CH4" />
+                <ScalarProperty Name="mV_CH5" ColumnName="mV_CH5" />
+                <ScalarProperty Name="mV_CH6" ColumnName="mV_CH6" />
+                <ScalarProperty Name="mV_CH7" ColumnName="mV_CH7" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeasurementsRAW_Kwerenda">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.MeasurementsRAW_Kwerenda">
+              <MappingFragment StoreEntitySet="MeasurementsRAW Kwerenda">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQUEST" ColumnName="REQUEST" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESPONSE" ColumnName="RESPONSE" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="COMPLETED" ColumnName="COMPLETED" />
+                <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION1" ColumnName="DESCRIPTION1" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="ENG_LEFT" ColumnName="ENG_LEFT" />
+                <ScalarProperty Name="ENG_RIGHT" ColumnName="ENG_RIGHT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModbusFrames">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.ModbusFrames">
+              <MappingFragment StoreEntitySet="ModbusFrames">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQUEST" ColumnName="REQUEST" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESPONSE" ColumnName="RESPONSE" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="COMPLETED" ColumnName="COMPLETED" />
+                <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION1" ColumnName="DESCRIPTION1" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="ENG_LEFT" ColumnName="ENG_LEFT" />
+                <ScalarProperty Name="ENG_RIGHT" ColumnName="ENG_RIGHT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polls">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.Polls">
+              <MappingFragment StoreEntitySet="Polls">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQUEST" ColumnName="REQUEST" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESPONSE" ColumnName="RESPONSE" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="COMPLETED" ColumnName="COMPLETED" />
+                <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="ENG_LEFT" ColumnName="ENG_LEFT" />
+                <ScalarProperty Name="ENG_RIGHT" ColumnName="ENG_RIGHT" />
+                <ScalarProperty Name="ACCU_VOLTAGE" ColumnName="ACCU_VOLTAGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESET_ID">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.RESET_ID">
+              <MappingFragment StoreEntitySet="RESET ID">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="H_set" ColumnName="H_set" />
+                <ScalarProperty Name="H_act" ColumnName="H_act" />
+                <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+                <ScalarProperty Name="Encoder1" ColumnName="Encoder1" />
+                <ScalarProperty Name="Encoder2" ColumnName="Encoder2" />
+                <ScalarProperty Name="Modulestatus" ColumnName="Modulestatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="Katamaran25102021Model.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS CODE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

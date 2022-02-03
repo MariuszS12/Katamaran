@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KatamaranPBLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DeepModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REQ_TIME" Type="datetime2" Precision="0" />
+          <Property Name="RESP_TIME" Type="datetime2" Precision="0" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" />
+          <Property Name="H_set" Type="real" />
+          <Property Name="H_act" Type="real" />
+          <Property Name="Temperature" Type="real" />
+          <Property Name="Encoder1" Type="int" />
+          <Property Name="Encoder2" Type="int" />
+          <Property Name="Modulestatus" Type="int" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ElmetronMeasurements">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REQ_TIME" Type="datetime2" Precision="0" />
+          <Property Name="RESP_TIME" Type="datetime2" Precision="0" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" />
+          <Property Name="pH" Type="real" />
+          <Property Name="Temperature" Type="real" />
+          <Property Name="Conductivity" Type="real" />
+          <Property Name="OxygenContent" Type="int" />
+          <Property Name="mV" Type="int" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IonSelectiveMeasurements">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REQ_TIME" Type="datetime2" Precision="0" />
+          <Property Name="RESP_TIME" Type="datetime2" Precision="0" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" />
+          <Property Name="IS_CH0" Type="real" />
+          <Property Name="IS_CH1" Type="real" />
+          <Property Name="IS_CH2" Type="real" />
+          <Property Name="IS_CH3" Type="real" />
+          <Property Name="IS_CH4" Type="real" />
+          <Property Name="IS_CH5" Type="real" />
+          <Property Name="IS_CH6" Type="real" />
+          <Property Name="IS_CH7" Type="real" />
+          <Property Name="mV_CH0" Type="real" />
+          <Property Name="mV_CH1" Type="real" />
+          <Property Name="mV_CH2" Type="real" />
+          <Property Name="mV_CH3" Type="real" />
+          <Property Name="mV_CH4" Type="real" />
+          <Property Name="mV_CH5" Type="real" />
+          <Property Name="mV_CH6" Type="real" />
+          <Property Name="mV_CH7" Type="real" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModbusFrames">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REQUEST" Type="nvarchar" MaxLength="255" />
+          <Property Name="REQ_TIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESPONSE" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESP_TIME" Type="nvarchar" MaxLength="255" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="COMPLETED" Type="bit" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION1" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" />
+          <Property Name="ENG_LEFT" Type="smallint" />
+          <Property Name="ENG_RIGHT" Type="smallint" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KatamaranPBL.dbo.Polls' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Polls">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REQUEST" Type="nvarchar" MaxLength="255" />
+          <Property Name="REQ_TIME" Type="datetime2" Precision="0" />
+          <Property Name="RESPONSE" Type="nvarchar" MaxLength="255" />
+          <Property Name="RESP_TIME" Type="datetime2" Precision="0" />
+          <Property Name="STATUS" Type="int" />
+          <Property Name="COMPLETED" Type="bit" />
+          <Property Name="PRIORITY" Type="int" />
+          <Property Name="LONGITUDE" Type="float" />
+          <Property Name="LATITUDE" Type="float" />
+          <Property Name="HEADING" Type="float" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="VALIDMEASURES" Type="bit" />
+          <Property Name="ENG_LEFT" Type="smallint" />
+          <Property Name="ENG_RIGHT" Type="smallint" />
+          <Property Name="ACCU_VOLTAGE" Type="int" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="STATUS CODE" Type="int" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="SSMA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="KatamaranPBLModelStoreContainer">
+          <EntitySet Name="DeepModule" EntityType="Self.DeepModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ElmetronMeasurements" EntityType="Self.ElmetronMeasurements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IonSelectiveMeasurements" EntityType="Self.IonSelectiveMeasurements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModbusFrames" EntityType="Self.ModbusFrames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Polls" EntityType="Self.Polls" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Polls].[ID] AS [ID], 
+    [Polls].[REQUEST] AS [REQUEST], 
+    [Polls].[REQ_TIME] AS [REQ_TIME], 
+    [Polls].[RESPONSE] AS [RESPONSE], 
+    [Polls].[RESP_TIME] AS [RESP_TIME], 
+    [Polls].[STATUS] AS [STATUS], 
+    [Polls].[COMPLETED] AS [COMPLETED], 
+    [Polls].[PRIORITY] AS [PRIORITY], 
+    [Polls].[LONGITUDE] AS [LONGITUDE], 
+    [Polls].[LATITUDE] AS [LATITUDE], 
+    [Polls].[HEADING] AS [HEADING], 
+    [Polls].[DESCRIPTION] AS [DESCRIPTION], 
+    [Polls].[VALIDMEASURES] AS [VALIDMEASURES], 
+    [Polls].[ENG_LEFT] AS [ENG_LEFT], 
+    [Polls].[ENG_RIGHT] AS [ENG_RIGHT], 
+    [Polls].[ACCU_VOLTAGE] AS [ACCU_VOLTAGE], 
+    [Polls].[SSMA_TimeStamp] AS [SSMA_TimeStamp]
+    FROM [dbo].[Polls] AS [Polls]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KatamaranPBLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DeepModule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="0" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="0" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" />
+          <Property Name="H_set" Type="Single" />
+          <Property Name="H_act" Type="Single" />
+          <Property Name="Temperature" Type="Single" />
+          <Property Name="Encoder1" Type="Int32" />
+          <Property Name="Encoder2" Type="Int32" />
+          <Property Name="Modulestatus" Type="Int32" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ElmetronMeasurement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="0" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="0" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" />
+          <Property Name="pH" Type="Single" />
+          <Property Name="Temperature" Type="Single" />
+          <Property Name="Conductivity" Type="Single" />
+          <Property Name="OxygenContent" Type="Int32" />
+          <Property Name="mV" Type="Int32" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="IonSelectiveMeasurement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="0" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="0" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" />
+          <Property Name="IS_CH0" Type="Single" />
+          <Property Name="IS_CH1" Type="Single" />
+          <Property Name="IS_CH2" Type="Single" />
+          <Property Name="IS_CH3" Type="Single" />
+          <Property Name="IS_CH4" Type="Single" />
+          <Property Name="IS_CH5" Type="Single" />
+          <Property Name="IS_CH6" Type="Single" />
+          <Property Name="IS_CH7" Type="Single" />
+          <Property Name="mV_CH0" Type="Single" />
+          <Property Name="mV_CH1" Type="Single" />
+          <Property Name="mV_CH2" Type="Single" />
+          <Property Name="mV_CH3" Type="Single" />
+          <Property Name="mV_CH4" Type="Single" />
+          <Property Name="mV_CH5" Type="Single" />
+          <Property Name="mV_CH6" Type="Single" />
+          <Property Name="mV_CH7" Type="Single" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ModbusFrame">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REQUEST" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REQ_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESPONSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESP_TIME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="COMPLETED" Type="Boolean" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" />
+          <Property Name="ENG_LEFT" Type="Int16" />
+          <Property Name="ENG_RIGHT" Type="Int16" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="STATUS_CODE" Type="Int32" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Poll">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="SSMA_TimeStamp" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REQUEST" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REQ_TIME" Type="DateTime" Precision="0" />
+          <Property Name="RESPONSE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RESP_TIME" Type="DateTime" Precision="0" />
+          <Property Name="STATUS" Type="Int32" />
+          <Property Name="COMPLETED" Type="Boolean" />
+          <Property Name="PRIORITY" Type="Int32" />
+          <Property Name="LONGITUDE" Type="Double" />
+          <Property Name="LATITUDE" Type="Double" />
+          <Property Name="HEADING" Type="Double" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VALIDMEASURES" Type="Boolean" />
+          <Property Name="ENG_LEFT" Type="Int16" />
+          <Property Name="ENG_RIGHT" Type="Int16" />
+          <Property Name="ACCU_VOLTAGE" Type="Int32" />
+          <Property Name="SSMA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityContainer Name="KatamaranPBLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DeepModules" EntityType="Self.DeepModule" />
+          <EntitySet Name="ElmetronMeasurements" EntityType="Self.ElmetronMeasurement" />
+          <EntitySet Name="IonSelectiveMeasurements" EntityType="Self.IonSelectiveMeasurement" />
+          <EntitySet Name="ModbusFrames" EntityType="Self.ModbusFrame" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Polls" EntityType="Self.Poll" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KatamaranPBLModelStoreContainer" CdmEntityContainer="KatamaranPBLEntities">
+          <EntitySetMapping Name="DeepModules">
+            <EntityTypeMapping TypeName="KatamaranPBLModel.DeepModule">
+              <MappingFragment StoreEntitySet="DeepModule">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="H_set" ColumnName="H_set" />
+                <ScalarProperty Name="H_act" ColumnName="H_act" />
+                <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+                <ScalarProperty Name="Encoder1" ColumnName="Encoder1" />
+                <ScalarProperty Name="Encoder2" ColumnName="Encoder2" />
+                <ScalarProperty Name="Modulestatus" ColumnName="Modulestatus" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ElmetronMeasurements">
+            <EntityTypeMapping TypeName="KatamaranPBLModel.ElmetronMeasurement">
+              <MappingFragment StoreEntitySet="ElmetronMeasurements">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="pH" ColumnName="pH" />
+                <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+                <ScalarProperty Name="Conductivity" ColumnName="Conductivity" />
+                <ScalarProperty Name="OxygenContent" ColumnName="OxygenContent" />
+                <ScalarProperty Name="mV" ColumnName="mV" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IonSelectiveMeasurements">
+            <EntityTypeMapping TypeName="KatamaranPBLModel.IonSelectiveMeasurement">
+              <MappingFragment StoreEntitySet="IonSelectiveMeasurements">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="IS_CH0" ColumnName="IS_CH0" />
+                <ScalarProperty Name="IS_CH1" ColumnName="IS_CH1" />
+                <ScalarProperty Name="IS_CH2" ColumnName="IS_CH2" />
+                <ScalarProperty Name="IS_CH3" ColumnName="IS_CH3" />
+                <ScalarProperty Name="IS_CH4" ColumnName="IS_CH4" />
+                <ScalarProperty Name="IS_CH5" ColumnName="IS_CH5" />
+                <ScalarProperty Name="IS_CH6" ColumnName="IS_CH6" />
+                <ScalarProperty Name="IS_CH7" ColumnName="IS_CH7" />
+                <ScalarProperty Name="mV_CH0" ColumnName="mV_CH0" />
+                <ScalarProperty Name="mV_CH1" ColumnName="mV_CH1" />
+                <ScalarProperty Name="mV_CH2" ColumnName="mV_CH2" />
+                <ScalarProperty Name="mV_CH3" ColumnName="mV_CH3" />
+                <ScalarProperty Name="mV_CH4" ColumnName="mV_CH4" />
+                <ScalarProperty Name="mV_CH5" ColumnName="mV_CH5" />
+                <ScalarProperty Name="mV_CH6" ColumnName="mV_CH6" />
+                <ScalarProperty Name="mV_CH7" ColumnName="mV_CH7" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModbusFrames">
+            <EntityTypeMapping TypeName="KatamaranPBLModel.ModbusFrame">
+              <MappingFragment StoreEntitySet="ModbusFrames">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQUEST" ColumnName="REQUEST" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESPONSE" ColumnName="RESPONSE" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="COMPLETED" ColumnName="COMPLETED" />
+                <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION1" ColumnName="DESCRIPTION1" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="ENG_LEFT" ColumnName="ENG_LEFT" />
+                <ScalarProperty Name="ENG_RIGHT" ColumnName="ENG_RIGHT" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="KatamaranPBLModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS CODE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Polls">
+            <EntityTypeMapping TypeName="KatamaranPBLModel.Poll">
+              <MappingFragment StoreEntitySet="Polls">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="REQUEST" ColumnName="REQUEST" />
+                <ScalarProperty Name="REQ_TIME" ColumnName="REQ_TIME" />
+                <ScalarProperty Name="RESPONSE" ColumnName="RESPONSE" />
+                <ScalarProperty Name="RESP_TIME" ColumnName="RESP_TIME" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="COMPLETED" ColumnName="COMPLETED" />
+                <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+                <ScalarProperty Name="LONGITUDE" ColumnName="LONGITUDE" />
+                <ScalarProperty Name="LATITUDE" ColumnName="LATITUDE" />
+                <ScalarProperty Name="HEADING" ColumnName="HEADING" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="VALIDMEASURES" ColumnName="VALIDMEASURES" />
+                <ScalarProperty Name="ENG_LEFT" ColumnName="ENG_LEFT" />
+                <ScalarProperty Name="ENG_RIGHT" ColumnName="ENG_RIGHT" />
+                <ScalarProperty Name="ACCU_VOLTAGE" ColumnName="ACCU_VOLTAGE" />
+                <ScalarProperty Name="SSMA_TimeStamp" ColumnName="SSMA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
