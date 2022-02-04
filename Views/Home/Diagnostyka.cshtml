@@ -211,8 +211,9 @@
         margin: 1em;
     }
 
-    /*Diody czujnik jonoselektywny*/
-    #led-greenJS {
+
+    /*Diody*/
+    #led-greenJS, #led-greenT, #led-greenO2, #led-greenCond, #led-greenPH, #led-greenGPS {
         /*Stworzenie zielonej diody*/
         margin: 0 auto;
         width: 24px;
@@ -223,7 +224,7 @@
         box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
     }
 
-    #led-yellowJS {
+    #led-yellowJS, #led-yellowT, #led-yellowO2, #led-yellowCond, #led-yellowPH, #led-yellowGPS {
         /*Stworzenie żółtej diody*/
         margin: 0 auto;
         width: 24px;
@@ -234,189 +235,13 @@
         box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
     }
 
-    #led-redJS {
+    #led-redJS, #led-redT, #led-redO2, #led-redCond, #led-redPH, #led-redGPS {
         /*Stworzenie czerwonej diody*/
         margin: 0 auto;
         width: 24px;
         height: 24px;
         background-color: #A00; /*to kolor ciemny*/
         /*background-color: #F00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-
-    /*Diody Temperatura*/
-    #led-greenT {
-        /*Stworzenie zielonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #63871B; to kolor ciemny*/
-        background-color: #ABFF00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-yellowT {
-        /*Stworzenie żółtej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #FF0; ustaw żeby świeciła*/
-        background-color: #AA0; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-redT {
-        /*Stworzenie czerwonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #F00; ustaw żeby świeciła*/
-        background-color: #A00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-
-    /*Diody O2*/
-    #led-greenO2 {
-        /*Stworzenie zielonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #63871B; to kolor ciemny*/
-        background-color: #ABFF00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-yellowO2 {
-        /*Stworzenie żółtej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #FF0; ustaw żeby świeciła*/
-        background-color: #AA0; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-redO2 {
-        /*Stworzenie czerwonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #F00; ustaw żeby świeciła*/
-        background-color: #A00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-
-
-    /*Diody Konduktancja*/
-    #led-greenCond {
-        /*Stworzenie zielonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #63871B; to kolor ciemny*/
-        background-color: #ABFF00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-yellowCond {
-        /*Stworzenie żółtej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #FF0; ustaw żeby świeciła*/
-        background-color: #AA0; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-redCond {
-        /*Stworzenie czerwonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #F00; ustaw żeby świeciła*/
-        background-color: #A00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-
-    /*Diody PH*/
-    #led-greenPH {
-        /*Stworzenie zielonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        background-color: #ABFF00; /*ustaw żeby świeciła*/
-        /*background-color: #63871B; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-yellowPH {
-        /*Stworzenie żółtej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #FF0;ustaw żeby świeciła*/
-        background-color: #AA0; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-redPH {
-        /*Stworzenie czerwonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        background-color: #A00; /*to kolor ciemny*/
-        /*background-color: #F00; Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-
-    /*Diody GPS*/
-    #led-greenGPS {
-        /*Stworzenie zielonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #63871B; to kolor ciemny*/
-        background-color: #ABFF00; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-yellowGPS {
-        /*Stworzenie żółtej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #FF0; ustaw żeby świeciła*/
-        background-color: #AA0; /*Nadanie koloru diody*/
-        border-radius: 50%; /*Nadanie okrągłego kształtu*/
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px; /*Stworzenie cienia dookoła diody*/
-    }
-
-    #led-redGPS {
-        /*Stworzenie czerwonej diody*/
-        margin: 0 auto;
-        width: 24px;
-        height: 24px;
-        /*background-color: #F00; ustaw żeby świeciła*/
-        background-color: #A00; /*Nadanie koloru diody*/
         border-radius: 50%; /*Nadanie okrągłego kształtu*/
         box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
     }
