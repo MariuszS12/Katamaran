@@ -204,13 +204,12 @@
         float: left;
     }
 
-    .led-box p {
-        /*Wycentrowanie w boxie diody*/
-        font-size: 12px;
-        text-align: center;
-        margin: 1em;
-    }
-
+        .led-box p {
+            /*Wycentrowanie w boxie diody*/
+            font-size: 12px;
+            text-align: center;
+            margin: 1em;
+        }
 
     /*Diody*/
     #led-greenJS, #led-greenT, #led-greenO2, #led-greenCond, #led-greenPH, #led-greenGPS {
@@ -245,7 +244,6 @@
         border-radius: 50%; /*Nadanie okrągłego kształtu*/
         box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px; /*Stworzenie cienia dookoła diody*/
     }
-
 
 
     h1 {
@@ -493,6 +491,7 @@
         document.getElementById("led-redGPS").style.backgroundColor = "#A00";
     }
 </script>
+
 
 <!-- Temperatura Elmetron -->
 <script>
@@ -850,7 +849,7 @@
         var sum = 0;
         var vs = 0, variance = 0, sdev = 0, width = 0, previous = 0, me = 0, err = 0, p = 0, war = 0, mi = 0, a = 0, up = 0, down = 0;
         l = x.length;
-        var tab = window.open('about:blank', '_blank');
+        //var tab = window.open('about:blank', '_blank');
 
         for (var i = 0; i < l; i++) {
 
@@ -883,7 +882,7 @@
                 width = width.toFixed(4); //zaokrąglenie do 4 miejsc po przecinku szerokosci przedzialu
                 up = up.toFixed(4); //zaokrąglenie do 4 miejsc po przecinku górnej granicy - wynikającej z obliczeń
                 down = down.toFixed(4); //zaokrąglenie do 4 miejsc po przecinku dolnej granicy - wynikającej z obliczeń
-                tab.document.write("Dane z " + name + " wartosc " + x[i] + " Poprzednia wartosc " + x[i - 1] + " Data  : " + y[i], " wart me " + me + " AVR " + avr[i] + " width " + width + " StanDev " + sdev + " góra " + up + " dół " + down + "<br>");
+                //tab.document.write("Dane z " + name + " wartosc " + x[i] + " Poprzednia wartosc " + x[i - 1] + " Data  : " + y[i], " wart me " + me + " AVR " + avr[i] + " width " + width + " StanDev " + sdev + " góra " + up + " dół " + down + "<br>"); //wypisywanie danych do nowej karty
 
                 if (i > mi + 10) {
                     me = 0;
@@ -936,7 +935,7 @@
         console.log(name + " ile razy = " + war);
         diag[0][0] = err;
         diag[0][1] = war;
-        tab.document.close();
+        //tab.document.close();
         return diag;
 
 
